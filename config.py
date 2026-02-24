@@ -10,11 +10,11 @@ AI_CONFIG = {
 
 # ==================== 2. 云数据库 (新加坡) ====================
 SHARED_DB_CONFIG = {
-    'host': '10.3.4.6',
-    'port': 3306,
+    'host': os.getenv('SHARED_DB_HOST', '10.3.4.6'),
+    'port': int(os.getenv('SHARED_DB_PORT', '3306')),
     'user': os.getenv('SHARED_DB_USER', 'root'),
     'password': os.getenv('SHARED_DB_PASSWORD', 'Mediasoft,.123'),
-    'database': 'hy_gjp_syn',
+    'database': os.getenv('SHARED_DB_DATABASE', 'hy_gjp_syn'),
     'raise_on_warnings': True
 }
 
