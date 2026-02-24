@@ -9,6 +9,7 @@ from modules import sales_comparison
 from modules import completion_bill_generate
 from modules import pick_bill_generate
 from modules import production_efficiency
+# Trae test change (no logic change)
 
 # ==========================================
 # 1. 页面配置
