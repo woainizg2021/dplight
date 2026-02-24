@@ -93,7 +93,7 @@ DEFAULT_TENANT_KEY = 'UGANDA'
 
 # ==================== 6. WhatsApp Token ====================
 ACCESS_TOKEN = os.getenv("WA_ACCESS_TOKEN", "EAAcsondWjEwBQuXQCrxaLFLaCwfQd2AQe1iaRa1GX9yxHJgqoZAgKNgZBvwJxE7TrIm68Tk8wHJrN7muwJN2FJTi4wXChuMiI5NMXyGiFEE1GPB8mUQJTkVQTHli2nznUGy4RGu2STsqXimqrUvxvZAL7dm1C3mpTeH55XYSnc8ZB4myx5rLa0iZA59DbjgZDZD")
-VERIFY_TOKEN = "123321"
+VERIFY_TOKEN = os.getenv("WA_VERIFY_TOKEN", "123321")
 
 # ==================== 7. 企业微信应用配置 ====================
 WX_CORP_ID = "wwb359b2ee13420d5c"
