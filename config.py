@@ -19,8 +19,8 @@ SHARED_DB_CONFIG = {
 }
 
 # ==================== 3. ERP 连接 ====================
-ERP_HOST = 'cmal_hk001-ww.rwxyun.site'
-ERP_PORT = 3433
+ERP_HOST = os.getenv('ERP_HOST', 'cmal_hk001-ww.rwxyun.site')
+ERP_PORT = int(os.getenv('ERP_PORT', '3433'))
 
 # ==================== 4. 多租户映射 ====================
 TENANTS = {
@@ -32,7 +32,7 @@ ERP_CREDENTIALS = {
     'UGANDA': { 
         'name': '🇺🇬 乌干达', 
         'currency': 'UGX', 
-        'user': 'ywszmjckyxgs_ggfn599939', 'pass': '0Nk107HO-321S!-_', 'db': 'CMCSYUN532502',
+        'user': os.getenv('ERP_UGANDA_USER', 'ywszmjckyxgs_ggfn599939'), 'pass': os.getenv('ERP_UGANDA_PASS', '0Nk107HO-321S!-_'), 'db': 'CMCSYUN532502',
         'business_rules': {
             'finished_types': ['00002'], 
             'material_types': ['00001', '00003', '00004', '00005', '00006'],
