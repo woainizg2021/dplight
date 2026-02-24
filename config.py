@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # config.py - Dplight 全球核心配置
+import os
 
 # ==================== 1. AI 配置 ====================
 AI_CONFIG = {
-    "api_key": "sk-bc25ffa2c6644689b8ec1b8314b80c48", 
+    "api_key": os.getenv("AI_API_KEY", "sk-bc25ffa2c6644689b8ec1b8314b80c48"),
     "base_url": "https://api.deepseek.com"
 }
 
@@ -91,7 +92,7 @@ ERP_CREDENTIALS = {
 DEFAULT_TENANT_KEY = 'UGANDA'
 
 # ==================== 6. WhatsApp Token ====================
-ACCESS_TOKEN = "EAAcsondWjEwBQuXQCrxaLFLaCwfQd2AQe1iaRa1GX9yxHJgqoZAgKNgZBvwJxE7TrIm68Tk8wHJrN7muwJN2FJTi4wXChuMiI5NMXyGiFEE1GPB8mUQJTkVQTHli2nznUGy4RGu2STsqXimqrUvxvZAL7dm1C3mpTeH55XYSnc8ZB4myx5rLa0iZA59DbjgZDZD"
+ACCESS_TOKEN = os.getenv("WA_ACCESS_TOKEN", "EAAcsondWjEwBQuXQCrxaLFLaCwfQd2AQe1iaRa1GX9yxHJgqoZAgKNgZBvwJxE7TrIm68Tk8wHJrN7muwJN2FJTi4wXChuMiI5NMXyGiFEE1GPB8mUQJTkVQTHli2nznUGy4RGu2STsqXimqrUvxvZAL7dm1C3mpTeH55XYSnc8ZB4myx5rLa0iZA59DbjgZDZD")
 VERIFY_TOKEN = "123321"
 
 # ==================== 7. 企业微信应用配置 ====================
