@@ -44,7 +44,7 @@ ERP_CREDENTIALS = {
     'NIGERIA': { 
         'name': '🇳🇬 尼日利亚', 
         'currency': 'NGN', 
-        'user': 'hzgjmy616329', 'pass': 'axup_-22637483', 'db': 'CMCSYUN355738',
+        'user': os.getenv('ERP_NIGERIA_USER', 'hzgjmy616329'), 'pass': os.getenv('ERP_NIGERIA_PASS', 'axup_-22637483'), 'db': 'CMCSYUN355738',
         'business_rules': {
             'finished_types': ['00003'],
             'material_types': ['00001', '00127', '00002'],
@@ -56,7 +56,7 @@ ERP_CREDENTIALS = {
     'KENYA': { 
         'name': '🇰🇪 肯尼亚', 
         'currency': 'KES', 
-        'user': 'ywszmjckyxgs_ggfn599939', 'pass': '0Nk107HO-321S!-_', 'db': 'CMCSYUN4348395',
+        'user': os.getenv('ERP_KENYA_USER', 'ywszmjckyxgs_ggfn599939'), 'pass': os.getenv('ERP_KENYA_PASS', '0Nk107HO-321S!-_'), 'db': 'CMCSYUN4348395',
         'business_rules': {
             'finished_types': ['00003'],
             'material_types': ['00001', '00004', '00005', '00007', '00009', '00010', '00011', '00012', '00013', '00002'],
@@ -68,7 +68,7 @@ ERP_CREDENTIALS = {
     'DRC': { 
         'name': '🇨🇩 刚果金', 
         'currency': 'USD', 
-        'user': 'hzgjmy616329', 'pass': 'axup_-22637483', 'db': 'CMCSYUN983044',
+        'user': os.getenv('ERP_DRC_USER', 'hzgjmy616329'), 'pass': os.getenv('ERP_DRC_PASS', 'axup_-22637483'), 'db': 'CMCSYUN983044',
         'business_rules': {
             'finished_types': ['00002'],
             'material_types': ['00001'],
@@ -80,7 +80,7 @@ ERP_CREDENTIALS = {
     'KENYA_AUDIO': { 
         'name': '🇰🇪 肯尼亚音响厂', 
         'currency': 'KES', 
-        'user': 'hzgjmy616329', 'pass': 'axup_-22637483', 'db': 'CMCSYUN650929',
+        'user': os.getenv('ERP_KENYA_AUDIO_USER', 'hzgjmy616329'), 'pass': os.getenv('ERP_KENYA_AUDIO_PASS', 'axup_-22637483'), 'db': 'CMCSYUN650929',
         'business_rules': {
             'finished_types': ['00002'],
             'material_types': ['00001'],
