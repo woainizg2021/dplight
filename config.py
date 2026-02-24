@@ -12,8 +12,8 @@ AI_CONFIG = {
 SHARED_DB_CONFIG = {
     'host': '10.3.4.6',
     'port': 3306,
-    'user': 'root',
-    'password': 'Mediasoft,.123',
+    'user': os.getenv('SHARED_DB_USER', 'root'),
+    'password': os.getenv('SHARED_DB_PASSWORD', 'Mediasoft,.123'),
     'database': 'hy_gjp_syn',
     'raise_on_warnings': True
 }
