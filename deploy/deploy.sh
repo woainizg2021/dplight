@@ -31,19 +31,32 @@ cd $FRONTEND_DIR
 # Check if npm is installed
 if ! command -v npm &> /dev/null; then
     echo "❌ npm not found. Installing Node.js..."
-    # Install Node.js (assuming CentOS/RHEL/OpenCloudOS)
-    curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+    # Install Node.js (OpenCloudOS/CentOS 8 stream)
+    curl -sL https://rpm.nodesource.com/setup_18.x | bash -
     yum install -y nodejs
 fi
+
+# Reload profile to ensure npm is in path if just installed
+source /etc/profile
 
 npm install
 npm run build
 
 # 4. Restart Services
 echo "🔄 Restarting Backend Service..."
+# Copy service file if not exists or updated
+if [ -f "$PROJECT_DIR/deploy/dplight-backend.service" ]; then
+    cp "$PROJECT_DIR/deploy/dplight-backend.service" /etc/systemd/system/
+    systemctl daemon-reload
+    systemctl enable dplight-backend
+fi
 systemctl restart dplight-backend
 
 echo "🔄 Reloading Nginx..."
+# Copy nginx config if not exists or updated
+if [ -f "$PROJECT_DIR/deploy/nginx.conf" ]; then
+    cp "$PROJECT_DIR/deploy/nginx.conf" /etc/nginx/nginx.conf
+fi
 nginx -s reload
 
 echo "✅ Deployment Completed Successfully!"
