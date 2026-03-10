@@ -1,0 +1,15 @@
+flask
+requests
+mysql-connector-python
+pymssql
+openai
+cryptography
+streamlit
+pandas
+pymysql
+altair
+tabulate
+openpyxl
+dashscope
+thefuzz
+python-Levenshtein

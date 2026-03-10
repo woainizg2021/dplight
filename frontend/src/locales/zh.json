@@ -1,0 +1,43 @@
+{
+  "menu": {
+    "dashboard": "仪表盘",
+    "group_daily": "集团今日快报",
+    "group_monthly": "集团月度对比",
+    "sales_today": "今日销售详情",
+    "stock_query": "库存查询"
+  },
+  "stock": {
+    "title": "库存查询",
+    "tab_days": "可销天数",
+    "tab_finished": "成品库存变动",
+    "search_placeholder": "搜索 (名称/编号)",
+    "status_filter": "状态筛选",
+    "warehouse": "仓库",
+    "query": "查询",
+    "hot": "热销",
+    "order": "下单",
+    "produce": "排产",
+    "days_available": "总可销天数",
+    "total_boxes": "总箱数",
+    "store_boxes": "门市箱数",
+    "factory_boxes": "工厂箱数",
+    "transit_boxes": "在途生产",
+    "warehouse_boxes": "在仓生产",
+    "missing_materials": "缺货材料",
+    "last_in_date": "最近入库",
+    "qty_start": "期初数量",
+    "qty_in": "入库数量",
+    "qty_out": "出库数量",
+    "qty_end": "结存数量",
+    "box_start": "期初箱数",
+    "box_in": "入库箱数",
+    "box_out": "出库箱数",
+    "box_end": "结存箱数",
+    "stock_name": "存货名称",
+    "stock_code": "存货编号"
+  },
+  "common": {
+    "all_warehouses": "全部仓库",
+    "yes": "是"
+  }
+}

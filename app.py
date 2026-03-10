@@ -6,9 +6,11 @@ import config
 # 引入翻译模块 languages
 from modules import sales_today, stock_finished, stock_material, stock_io_detail, security, bom_query, sales_target, production_target, stock_days, doc_check, rank_sku, rank_salesman, rank_category, rank_customer, arap_query, sys_logs, expense_query, stock_out_days, fund_query, languages, business_history, voucher_list
 from modules import sales_comparison 
+from modules import production_sales_inventory
 from modules import completion_bill_generate
 from modules import pick_bill_generate
 from modules import production_efficiency
+from modules import task_dashboard
 # Trae test change (no logic change)
 
 # ==========================================
@@ -159,12 +161,19 @@ with st.sidebar:
     st.markdown("---")
     st.markdown(f"### {T('功能列表')}")
     
-    menu_list = [
+    # 核心功能菜单
+    menu_core = [
+         "改进任务督办中心",
          "工厂人效对比",  
          "五司销售绩效看板",
+         "产销存分析",
          "经营历程",
          "生成完工验收单","生产领料单",
-         "销售查询", 
+         "销售查询"
+    ]
+    
+    # 更多报表菜单
+    menu_more = [
          "原材料库存查询", "成品库存查询", "出入库明细查询",    
          "销售目标进度查询", "生产目标进度查询", "可销天数查询",
          "单据核对系统", "BOM结构查询",
@@ -172,18 +181,83 @@ with st.sidebar:
          "应收款查询", "费用查询", "热销款断货天数", "资金查询", "凭证列表","系统日志"
     ]
     
-    display_menu = []
+    # 渲染核心菜单
+    display_core = []
     sensitive_set = set(config.SENSITIVE_MENUS) 
 
-    for m in menu_list:
+    for m in menu_core:
         display_text = m
         if m in sensitive_set:
             display_text = f"🔑 {m}"
-        display_menu.append(display_text)
+        display_core.append(display_text)
 
-    selected_display = st.radio(T("导航"), display_menu, format_func=lambda x: T(x), label_visibility="collapsed")
-    selected_menu = selected_display.replace("🔑 ", "")
+    # 渲染更多报表折叠区
+    selected_menu = None
     
+    # 互斥回调函数
+    def clear_more():
+        st.session_state['more_radio'] = None
+        
+    def clear_core():
+        st.session_state['core_radio'] = None
+    
+    # 使用 session_state 记住选择，防止刷新重置
+    if 'menu_selection' not in st.session_state:
+        st.session_state['menu_selection'] = menu_core[0]
+
+    # 1. 核心区域
+    selected_core = st.radio(
+        T("核心功能"), 
+        display_core, 
+        index=None, 
+        key="core_radio", 
+        format_func=lambda x: T(x), 
+        label_visibility="collapsed",
+        on_change=clear_more
+    )
+    
+    # 2. 更多区域
+    # 判断当前选中项是否在更多菜单中，以此决定展开状态和标题提示
+    current_selection = st.session_state.get('menu_selection')
+    is_more_selected = current_selection in menu_more
+    
+    expander_title = f"📌 {T('更多报表')}"
+    if is_more_selected:
+        expander_title += f" (✅ {current_selection})"
+
+    with st.expander(expander_title, expanded=is_more_selected):
+        display_more = []
+        for m in menu_more:
+            display_text = m
+            if m in sensitive_set:
+                display_text = f"🔑 {m}"
+            display_more.append(display_text)
+            
+        selected_more = st.radio(
+            T("更多功能"), 
+            display_more, 
+            index=menu_more.index(current_selection) if is_more_selected else None,
+            key="more_radio", 
+            label_visibility="collapsed",
+            format_func=lambda x: T(x),
+            on_change=clear_core
+        )
+
+    # 逻辑：互斥选择
+    if selected_core:
+        selected_menu = selected_core.replace("🔑 ", "")
+        st.session_state['menu_selection'] = selected_menu
+        # 如果选了核心，把更多清空（Streamlit limitation: radio can't be programmatically cleared easily without rerun, 
+        # but we can prioritize selected_core if it changed）
+        
+    elif selected_more:
+        selected_menu = selected_more.replace("🔑 ", "")
+        st.session_state['menu_selection'] = selected_menu
+    
+    # 如果都为 None (刚初始化)，使用 default
+    if not selected_menu:
+        selected_menu = st.session_state.get('menu_selection', menu_core[0])
+
     st.caption(f"{T('当前')}: {selected_name} ({current_config.get('currency', '')})")
 
 # 建立 ERP 连接
@@ -217,16 +291,22 @@ if conn_erp:
             st.error(T("密码错误"))
 
     if is_unlocked:
-        if selected_menu == "销售查询":
+        if selected_menu == "任务督办中心":
+            task_dashboard.show(st, mysql_conf, selected_name)
+            
+        elif selected_menu == "销售查询":
             sales_today.show(st, conn_erp, mysql_conf, selected_name)
 
+        elif selected_menu == "产销存分析":
+            production_sales_inventory.show(st, conn_erp, mysql_conf, current_country)
+
         elif selected_menu == "五司销售绩效看板":
-            sales_comparison.show(st, st.session_state['user_tenants'])
+            sales_comparison.show(st, st.session_state['user_tenants'], mysql_conf, current_country)
             
         elif selected_menu == "工厂人效对比":
             # 获取全局跨公司连接池并传入人效模块
             tenant_conns_pool = get_all_tenant_connections()
-            # 传递修复后的参数
+            # 传递参数：数据库连接和当前国家，用于报告存储
             production_efficiency.show(st, tenant_conns_pool, conn_syn, current_country)
 
         elif selected_menu == "经营历程":
@@ -245,7 +325,7 @@ if conn_erp:
             stock_material.show(st, conn_erp, current_config)
             
         elif selected_menu == "出入库明细查询":
-            stock_io_detail.show(st, conn_erp)
+            stock_io_detail.show(st, conn_erp, mysql_conf, current_country)
             
         elif selected_menu == "销售目标进度查询":
             sales_target.show(st, conn_erp, mysql_conf, selected_name)
@@ -288,7 +368,7 @@ if conn_erp:
             
         elif selected_menu == "单据核对系统":
             db_auth_conf = {'host':config.ERP_HOST, 'port':config.ERP_PORT, 'user':current_config['user'], 'pass':current_config['pass'], 'db':current_config['db']}
-            doc_check.show(st, db_auth_conf)
+            doc_check.show(st, db_auth_conf, mysql_conf, current_country)
             
         elif selected_menu == "系统日志":
             sys_logs.show(st, mysql_conf)

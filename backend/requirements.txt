@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+redis
+pydantic
+pydantic-settings
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+python-dotenv
+pymssql
+pymysql
+httpx
+requests

@@ -1,0 +1,43 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "group_daily": "Group Daily",
+    "group_monthly": "Group Monthly",
+    "sales_today": "Sales Today",
+    "stock_query": "Stock Query"
+  },
+  "stock": {
+    "title": "Stock Query",
+    "tab_days": "Stock Days",
+    "tab_finished": "Finished Stock",
+    "search_placeholder": "Search (Name/Code)",
+    "status_filter": "Status Filter",
+    "warehouse": "Warehouse",
+    "query": "Query",
+    "hot": "Hot",
+    "order": "Order",
+    "produce": "Produce",
+    "days_available": "Days Available",
+    "total_boxes": "Total Boxes",
+    "store_boxes": "Store Boxes",
+    "factory_boxes": "Factory Boxes",
+    "transit_boxes": "Transit Boxes",
+    "warehouse_boxes": "Warehouse Boxes",
+    "missing_materials": "Missing Materials",
+    "last_in_date": "Last In Date",
+    "qty_start": "Opening Qty",
+    "qty_in": "In Qty",
+    "qty_out": "Out Qty",
+    "qty_end": "Ending Qty",
+    "box_start": "Opening Boxes",
+    "box_in": "In Boxes",
+    "box_out": "Out Boxes",
+    "box_end": "Ending Boxes",
+    "stock_name": "Stock Name",
+    "stock_code": "Stock Code"
+  },
+  "common": {
+    "all_warehouses": "All Warehouses",
+    "yes": "Yes"
+  }
+}
