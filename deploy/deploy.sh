@@ -28,10 +28,10 @@ pip install -r requirements.txt
 echo "🎨 Deploying Frontend..."
 cd $FRONTEND_DIR
 
-# Install Node.js if npm command not found
-if ! command -v npm &> /dev/null; then
-    echo "❌ npm not found. Installing Node.js..."
-    curl -sL https://rpm.nodesource.com/setup_18.x | bash -
+# Install Node.js 20 (Required by Vite 6+)
+if ! command -v node &> /dev/null || [[ $(node -v) =~ ^v1[0-9] ]]; then
+    echo "❌ Node.js 20+ required. Installing..."
+    curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
     yum install -y nodejs
 fi
 

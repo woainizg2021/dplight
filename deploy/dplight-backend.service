@@ -7,8 +7,9 @@ User=root
 Group=root
 WorkingDirectory=/opt/dplight/backend
 Environment="PATH=/opt/dplight/backend/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
-EnvironmentFile=/opt/dplight/.env
-ExecStart=/opt/dplight/backend/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
+# EnvironmentFile=/opt/dplight/.env  # Comment out if file doesn't exist
+ExecStart=/opt/dplight/backend/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --workers 2
+# Reduced workers to avoid memory issues on small instances
 
 Restart=always
 RestartSec=3
