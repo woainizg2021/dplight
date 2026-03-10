@@ -27,6 +27,15 @@ pip install -r requirements.txt
 # 3. Frontend Deployment
 echo "🎨 Deploying Frontend..."
 cd $FRONTEND_DIR
+
+# Check if npm is installed
+if ! command -v npm &> /dev/null; then
+    echo "❌ npm not found. Installing Node.js..."
+    # Install Node.js (assuming CentOS/RHEL/OpenCloudOS)
+    curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+    yum install -y nodejs
+fi
+
 npm install
 npm run build
 
