@@ -28,16 +28,15 @@ pip install -r requirements.txt
 echo "🎨 Deploying Frontend..."
 cd $FRONTEND_DIR
 
-# Check if npm is installed
+# Install Node.js if npm command not found
 if ! command -v npm &> /dev/null; then
     echo "❌ npm not found. Installing Node.js..."
-    # Install Node.js (OpenCloudOS/CentOS 8 stream)
     curl -sL https://rpm.nodesource.com/setup_18.x | bash -
     yum install -y nodejs
 fi
 
-# Reload profile to ensure npm is in path if just installed
-source /etc/profile
+# Explicitly add node to path for this session
+export PATH=$PATH:/usr/bin:/usr/local/bin
 
 npm install
 npm run build
