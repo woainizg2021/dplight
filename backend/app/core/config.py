@@ -44,17 +44,17 @@ class Settings(BaseSettings):
     REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
 
-    # AI
-    DEEPSEEK_API_KEY: str
-    DEEPSEEK_BASE_URL: str
-
-    # WeCom Webhooks
-    WX_WEBHOOK_UGANDA: str
-    WX_WEBHOOK_KENYA: str
-
-    # Sensitive Passwords
-    DEFAULT_PASSWORD: str
-    PROFIT_SECRET_KEY: str
+    # External APIs
+    DEEPSEEK_API_KEY: str = "sk-placeholder-please-replace"
+    DEEPSEEK_BASE_URL: str = "https://api.deepseek.com/v1"
+    
+    # Webhooks
+    WX_WEBHOOK_UGANDA: str = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=placeholder"
+    WX_WEBHOOK_KENYA: str = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=placeholder"
+    
+    # App Secrets
+    DEFAULT_PASSWORD: str = "123456"
+    PROFIT_SECRET_KEY: str = "profit-secret-placeholder"
 
     class Config:
         case_sensitive = True
