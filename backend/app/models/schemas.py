@@ -150,3 +150,11 @@ class FinanceVoucher(BaseModel):
     amount: float
     status: str
     company_key: str
+
+# Inventory
+class InventoryReport(BaseModel):
+    company_key: str
+    raw_materials: List[Dict[str, Any]]
+    semi_finished: List[Dict[str, Any]]
+    finished_goods: List[Dict[str, Any]]
+    summary: Dict[str, Any]
