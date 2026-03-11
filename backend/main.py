@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.api.v1.routes import (
+from app.api.v1.routes import (
     auth,
     dashboard_group,
     finance,
@@ -8,7 +8,7 @@ from backend.app.api.v1.routes import (
     inventory,
     production
 )
-from backend.app.core.config import settings
+from app.core.config import settings
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
