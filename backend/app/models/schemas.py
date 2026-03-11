@@ -114,3 +114,39 @@ class MonthRequest(BaseModel):
 
 class CacheFlushRequest(BaseModel):
     pattern: str
+
+# Finance & AR
+class ARAging(BaseModel):
+    company_key: str
+    current: float
+    days_30: float
+    days_60: float
+    days_90: float
+    days_over_90: float
+    total: float
+
+class ARQuery(BaseModel):
+    company_key: Optional[str]
+    customer_id: Optional[str]
+
+class FinanceExpense(BaseModel):
+    id: str
+    date: date
+    category: str
+    amount: float
+    description: str
+    company_key: str
+
+class FinanceCash(BaseModel):
+    company_key: str
+    currency: str
+    balance: float
+    bank_name: str
+
+class FinanceVoucher(BaseModel):
+    id: str
+    date: date
+    type: str
+    amount: float
+    status: str
+    company_key: str
