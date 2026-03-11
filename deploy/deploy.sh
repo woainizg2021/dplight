@@ -28,16 +28,6 @@ pip install -r requirements.txt
 echo "🎨 Deploying Frontend..."
 cd $FRONTEND_DIR
 
-# Install Node.js 20 (Required by Vite 6+)
-if ! command -v node &> /dev/null || [[ $(node -v) =~ ^v1[0-9] ]]; then
-    echo "❌ Node.js 20+ required. Upgrading..."
-    # Clean old nodejs
-    yum remove -y nodejs npm
-    # Install Node.js 20
-    curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
-    yum install -y nodejs
-fi
-
 # Explicitly add node to path for this session
 export PATH=$PATH:/usr/bin:/usr/local/bin
 

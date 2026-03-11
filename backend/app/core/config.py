@@ -17,47 +17,26 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-    # JWT
-    SECRET_KEY: str
+    # Database
+    MSSQL_SERVER: str = "43.156.110.64"
+    MSSQL_USER: str = "sa"
+    MSSQL_PASSWORD: str = "yangjgsj123,."
+    MSSQL_DB_GROUP1: str = "T100_S1"
+    MSSQL_DB_GROUP2: str = "T100_S2"
+    
+    MYSQL_SERVER: str = "43.156.110.64"
+    MYSQL_USER: str = "root"
+    MYSQL_PASSWORD: str = "yangjgsj123,."
+    MYSQL_DB: str = "dplight_erp"
+
+    # Security
+    SECRET_KEY: str = "your-secret-key-please-change-in-production"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
 
-    # MSSQL Database Group 1 (UGANDA, KENYA)
-    MSSQL_HOST_GROUP1: str
-    MSSQL_USER_GROUP1: str
-    MSSQL_PASS_GROUP1: str
-    MSSQL_PORT_GROUP1: int = 3433
-
-    # MSSQL Database Group 2 (NIGERIA, DRC, KENYA_AUDIO)
-    MSSQL_HOST_GROUP2: str
-    MSSQL_USER_GROUP2: str
-    MSSQL_PASS_GROUP2: str
-    MSSQL_PORT_GROUP2: int = 3433
-
-    # Company DB Mapping
-    COMPANY_DB_MAP: Dict[str, str] = {
-        "UGANDA": "CMCSYUN532502",
-        "KENYA": "CMCSYUN4348395",
-        "NIGERIA": "CMCSYUN355738",
-        "DRC": "CMCSYUN983044",
-        "KENYA_AUDIO": "CMCSYUN650929"
-    }
-
-    # MySQL Database (Tencent Cloud)
-    MYSQL_HOST: str
-    MYSQL_PORT: int = 23459
-    MYSQL_USER: str
-    MYSQL_PASS: str
-    MYSQL_DB: str = "hy_gjp_syn"
-    MYSQL_DB_FEEDBACK: str = "dplight_feedback"
-
     # Redis
-    REDIS_HOST: str
+    REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
-    REDIS_DB: int = 0
-    REDIS_PASSWORD: Optional[str] = None
-    DASHBOARD_CACHE_TTL: int = 600  # 10 minutes
-    MONTHLY_CACHE_TTL: int = 3600   # 1 hour
 
     # AI
     DEEPSEEK_API_KEY: str
