@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import Optional
 from datetime import date
-from backend.app.services.dashboard_service import dashboard_service
-from backend.app.services.monthly_compare_service import monthly_compare_service
-from backend.app.services.sales_performance_service import sales_performance_service
-from backend.app.core.security import get_current_active_user
-from backend.app.models.schemas import (
+from app.services.dashboard_service import dashboard_service
+from app.services.monthly_compare_service import monthly_compare_service
+from app.services.sales_performance_service import sales_performance_service
+from app.core.security import get_current_active_user
+from app.models.schemas import (
     DashboardResponse, MonthlyCompareResponse, SalesPerformanceResponse, User
 )
 
@@ -69,7 +69,7 @@ async def clear_dashboard_cache(
 ):
     """清除仪表板相关缓存"""
     try:
-        from backend.app.core.cache import cache_service
+        from app.core.cache import cache_service
         import datetime
         
         if date_str:

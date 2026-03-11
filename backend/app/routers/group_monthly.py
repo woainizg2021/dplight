@@ -5,7 +5,7 @@ import datetime
 import calendar
 import pymssql
 import logging
-from backend.app.config import ERP_CREDENTIALS, ERP_HOST, ERP_PORT
+from app.config import ERP_CREDENTIALS, ERP_HOST, ERP_PORT
 
 router = APIRouter()
 logger = logging.getLogger(__name__)

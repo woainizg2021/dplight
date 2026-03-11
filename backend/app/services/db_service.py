@@ -1,7 +1,7 @@
 from typing import Generator
 import pymssql
 import pymysql
-from backend.app.config import (
+from app.config import (
     ERP_CREDENTIALS,
     SHARED_DB_CONFIG,
     ERP_HOST,

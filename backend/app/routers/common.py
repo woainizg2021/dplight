@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from backend.app.services.cache_service import get_cache_service, CacheService
-from backend.app.services.currency_service import get_currency_service, CurrencyService
-from backend.app.models.schemas import ExchangeRateResponse, CacheFlushRequest
+from app.services.cache_service import get_cache_service, CacheService
+from app.services.currency_service import get_currency_service, CurrencyService
+from app.models.schemas import ExchangeRateResponse, CacheFlushRequest
 
 router = APIRouter()
 

@@ -3,7 +3,7 @@ from typing import List, Dict, Any, Optional
 import logging
 import datetime
 import pymssql
-from backend.app.services.db_service import get_db_connection as get_mssql_connection
+from app.services.db_service import get_db_connection as get_mssql_connection
 
 router = APIRouter()
 logger = logging.getLogger(__name__)

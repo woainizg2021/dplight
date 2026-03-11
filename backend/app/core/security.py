@@ -4,8 +4,8 @@ from jose import jwt, JWTError
 from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from backend.app.core.config import settings
-from backend.app.models.schemas import TokenData, User, UserInDB
+from app.core.config import settings
+from app.models.schemas import TokenData, User, UserInDB
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login")

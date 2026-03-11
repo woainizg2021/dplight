@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
 from typing import Optional
-from backend.app.core.security import get_current_active_user, check_company_permission
-from backend.app.services.inventory_service import inventory_service, inventory_analysis_service
-from backend.app.models.schemas import InventoryReport, InventoryAnalysis, User
+from app.core.security import get_current_active_user, check_company_permission
+from app.services.inventory_service import inventory_service, inventory_analysis_service
+from app.models.schemas import InventoryReport, InventoryAnalysis, User
 
 router = APIRouter()
 

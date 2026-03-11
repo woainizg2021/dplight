@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import List, Optional
 from datetime import date
-from backend.app.services.db_service import get_mssql_connection
-from backend.app.services.cache_service import get_cache_service, CacheService
-from backend.app.services.currency_service import get_currency_service, CurrencyService
-from backend.app.models.schemas import DashboardData
-from backend.app.config import DASHBOARD_CACHE_TTL
+from app.services.db_service import get_mssql_connection
+from app.services.cache_service import get_cache_service, CacheService
+from app.services.currency_service import get_currency_service, CurrencyService
+from app.models.schemas import DashboardData
+from app.config import DASHBOARD_CACHE_TTL
 import logging
 
 router = APIRouter()

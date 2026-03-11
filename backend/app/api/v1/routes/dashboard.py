@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import Optional
 from datetime import date
-from backend.app.services.dashboard_service import dashboard_service
-from backend.app.core.security import get_current_active_user
-from backend.app.models.schemas import DashboardResponse, User
+from app.services.dashboard_service import dashboard_service
+from app.core.security import get_current_active_user
+from app.models.schemas import DashboardResponse, User
 
 router = APIRouter()
 
@@ -54,7 +54,7 @@ async def clear_dashboard_cache(
 ):
     """清除仪表板缓存"""
     try:
-        from backend.app.core.cache import cache_service
+        from app.core.cache import cache_service
         import datetime
         
         today = datetime.date.today().strftime('%Y-%m-%d')

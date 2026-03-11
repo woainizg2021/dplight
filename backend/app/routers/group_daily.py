@@ -4,8 +4,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import datetime
 import pymssql
 import logging
-from backend.app.config import ERP_CREDENTIALS, ERP_HOST, ERP_PORT
-from backend.app.models.schemas import DashboardData
+from app.config import ERP_CREDENTIALS, ERP_HOST, ERP_PORT
+from app.models.schemas import DashboardData
 
 router = APIRouter()
 logger = logging.getLogger(__name__)

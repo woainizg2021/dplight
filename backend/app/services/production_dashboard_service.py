@@ -1,8 +1,8 @@
 from typing import Dict, Any, Optional, List
 from datetime import datetime, date
-from backend.app.db.mssql import get_db_connection
-from backend.app.db.mysql import get_mysql_connection
-from backend.app.models.schemas import ProductionCapacity, ProductionWorkgroup, WIPWarning, QualityTrend
+from app.db.mssql import get_db_connection
+from app.db.mysql import get_mysql_connection
+from app.models.schemas import ProductionCapacity, ProductionWorkgroup, WIPWarning, QualityTrend
 import logging
 
 logger = logging.getLogger(__name__)

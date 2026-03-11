@@ -2,7 +2,7 @@ import json
 import redis
 from typing import Optional, Any
 from datetime import datetime
-from backend.app.config import (
+from app.config import (
     REDIS_HOST,
     REDIS_PORT,
     REDIS_PASSWORD,

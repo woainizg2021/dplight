@@ -1,5 +1,5 @@
 import pymysql
-from backend.app.core.config import settings
+from app.core.config import settings
 
 def get_mysql_connection():
     """

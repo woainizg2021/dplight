@@ -2,11 +2,11 @@ from datetime import datetime, date, timedelta
 from typing import List, Dict, Any, Optional
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
-from backend.app.db.mssql import get_db_connection
-from backend.app.db.mysql import get_mysql_connection
-from backend.app.core.cache import cache_service
-from backend.app.core.config import settings
-from backend.app.models.schemas import (
+from app.db.mssql import get_db_connection
+from app.db.mysql import get_mysql_connection
+from app.core.cache import cache_service
+from app.core.config import settings
+from app.models.schemas import (
     DashboardResponse, CompanyDashboardData, SalesTrend, DashboardAlert
 )
 import logging

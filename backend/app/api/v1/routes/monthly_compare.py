@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import Optional
 from datetime import date
-from backend.app.services.monthly_compare_service import monthly_compare_service
-from backend.app.core.security import get_current_active_user
-from backend.app.models.schemas import MonthlyCompareResponse, User
+from app.services.monthly_compare_service import monthly_compare_service
+from app.core.security import get_current_active_user
+from app.models.schemas import MonthlyCompareResponse, User
 
 router = APIRouter()
 
@@ -46,7 +46,7 @@ async def clear_monthly_compare_cache(
 ):
     """清除月度对比缓存"""
     try:
-        from backend.app.core.cache import cache_service
+        from app.core.cache import cache_service
         
         cache_key = f"dashboard:monthly:{year}:{month}"
         cache_service.delete(cache_key)

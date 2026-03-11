@@ -1,7 +1,7 @@
 from typing import Dict, Any, Optional, List
 from datetime import datetime, date
-from backend.app.db.mssql import get_db_connection
-from backend.app.models.schemas import ARAging, ARQuery, FinanceExpense, FinanceCash, FinanceVoucher
+from app.db.mssql import get_db_connection
+from app.models.schemas import ARAging, ARQuery, FinanceExpense, FinanceCash, FinanceVoucher
 import logging
 
 logger = logging.getLogger(__name__)

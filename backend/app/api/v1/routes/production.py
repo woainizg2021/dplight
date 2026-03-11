@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query
-from backend.app.core.security import get_current_active_user, check_company_permission
-from backend.app.services.production_service import production_service
-from backend.app.models.schemas import ProductionOverview, User
+from app.core.security import get_current_active_user, check_company_permission
+from app.services.production_service import production_service
+from app.models.schemas import ProductionOverview, User
 
 router = APIRouter()
 

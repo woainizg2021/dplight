@@ -1,6 +1,6 @@
 from datetime import date
 from typing import Dict, List, Optional
-from backend.app.db.mysql import get_mysql_connection
+from app.db.mysql import get_mysql_connection
 import logging
 
 logger = logging.getLogger(__name__)

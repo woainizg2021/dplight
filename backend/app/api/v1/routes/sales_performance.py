@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import Optional, Literal
 from datetime import date
-from backend.app.services.sales_performance_service import sales_performance_service
-from backend.app.core.security import get_current_active_user
-from backend.app.models.schemas import SalesPerformanceResponse, User
+from app.services.sales_performance_service import sales_performance_service
+from app.core.security import get_current_active_user
+from app.models.schemas import SalesPerformanceResponse, User
 
 router = APIRouter()
 
@@ -44,7 +44,7 @@ async def clear_sales_performance_cache(
 ):
     """清除销售绩效缓存"""
     try:
-        from backend.app.core.cache import cache_service
+        from app.core.cache import cache_service
         
         cache_key = f"dashboard:sales-performance:{year}:{month}:{period_type}"
         cache_service.delete(cache_key)

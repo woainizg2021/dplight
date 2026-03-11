@@ -1,7 +1,7 @@
 import redis
 import json
 from typing import Optional, Any
-from backend.app.core.config import settings
+from app.core.config import settings
 import logging
 
 logger = logging.getLogger(__name__)

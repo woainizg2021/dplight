@@ -1,6 +1,6 @@
 import pymssql
 from typing import Optional
-from backend.app.core.config import settings
+from app.core.config import settings
 
 def get_db_connection(company_key: str):
     """

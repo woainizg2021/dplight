@@ -1,5 +1,5 @@
 from typing import List, Dict, Any
-from backend.app.services.db_service import get_mssql_connection
+from app.services.db_service import get_mssql_connection
 import logging
 
 logger = logging.getLogger(__name__)
