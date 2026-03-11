@@ -17,11 +17,22 @@ git pull origin main
 # 2. Backend Deployment
 echo "🐍 Deploying Backend..."
 cd $BACKEND_DIR
+
+# Create virtual environment if not exists
 if [ ! -d "venv" ]; then
     echo "Creating Python virtual environment..."
     python3 -m venv venv
 fi
+
+# Activate virtual environment
 source venv/bin/activate
+
+# Upgrade pip
+pip install --upgrade pip
+
+# Install dependencies
+# Explicitly install bcrypt < 4.0.0 to fix passlib compatibility issues
+pip install "bcrypt<4.0.0"
 pip install -r requirements.txt
 
 # 3. Frontend Deployment
